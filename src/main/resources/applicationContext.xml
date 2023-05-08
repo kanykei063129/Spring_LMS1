@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <context:property-placeholder location="classpath:application.properties"></context:property-placeholder>
+
+    <bean id="chuyskiy" class="peaksoft.Chuyskiy">
+        <constructor-arg value="${world}" />
+    </bean>
+
+    <bean id="jibekJoly" class="peaksoft.JibekJoly">
+        <constructor-arg value="${world2}" />
+    </bean>
+
+    <bean id="street" class="peaksoft.Street">
+        <constructor-arg ref="chuyskiy" />
+        <constructor-arg ref="jibekJoly" />
+        <property name="list">
+            <list>
+                <value>Value 1</value>
+                <value>Value 2</value>
+                <value>Value 3</value>
+            </list>
+        </property>
+    </bean>
+</beans>
